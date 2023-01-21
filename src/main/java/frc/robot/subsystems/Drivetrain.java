@@ -16,23 +16,18 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import frc.robot.Constants.DrivetrainConstants;
 /** Represents a differential drive style drivetrain. */
 public class Drivetrain extends SubsystemBase {
-  public static final double kMaxSpeed = 3.0; // meters per second
-  public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
+  
 
-  private static final double kTrackWidth = 0.381 * 2; // meters
-  private static final double kWheelRadius = 0.0508; // meters
-  private static final int kEncoderResolution = 4096;
+  private final MotorController m_leftLeader = new WPI_TalonSRX(kLeftLeaderId);
+  private final MotorController m_leftFollower = new WPI_TalonSRX(kLeftFollowerId); 
+  private final MotorController m_rightLeader = new WPI_TalonSRX(kRightLeaderId);
+  private final MotorController m_rightFollower = new WPI_TalonSRX(kRightFollowerId);
 
-  private final MotorController m_leftLeader = new WPI_TalonSRX(1);
-  private final MotorController m_leftFollower = new WPI_TalonSRX(2); 
-  private final MotorController m_rightLeader = new WPI_TalonSRX(3);
-  private final MotorController m_rightFollower = new WPI_TalonSRX(4);
-
-  private final Encoder m_leftEncoder = new Encoder(0, 1);
-  private final Encoder m_rightEncoder = new Encoder(2, 3);
+  private final Encoder m_leftEncoder = new Encoder(kLeftEncoderA, kLeftEncoderB);
+  private final Encoder m_rightEncoder = new Encoder(kRightEncoderA, kRightEncoderB);
 
   private final MotorControllerGroup m_leftGroup =
       new MotorControllerGroup(m_leftLeader, m_leftFollower);
@@ -41,8 +36,8 @@ public class Drivetrain extends SubsystemBase {
 
   private final AnalogGyro m_gyro = new AnalogGyro(0);
 
-  private final PIDController m_leftPIDController = new PIDController(1, 0, 0);
-  private final PIDController m_rightPIDController = new PIDController(1, 0, 0);
+  private final PIDController m_leftPIDController = new PIDController(kP, kI, kD);
+  private final PIDController m_rightPIDController = new PIDController(kP, kI, kD);
 
   private final DifferentialDriveKinematics m_kinematics =
       new DifferentialDriveKinematics(kTrackWidth);
@@ -50,8 +45,8 @@ public class Drivetrain extends SubsystemBase {
   private final DifferentialDriveOdometry m_odometry;
 
   // Gains are for example purposes only - must be determined for your own robot!
-  private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(1, 3);
-
+  private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(kS, kV, kA);
+  
   /**
    * Constructs a differential drive object. Sets the encoder distance per pulse and resets the
    * gyro.

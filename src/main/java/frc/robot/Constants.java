@@ -13,6 +13,37 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static class DrivetrainConstants {
+    public static final int kLeftLeaderId = 1;
+    public static final int kLeftFollowerId = 2;
+    public static final int kRightLeaderId = 3;
+    public static final int kRightFollowerId = 4;
+
+    public static final int kLeftEncoderA = 0;
+    public static final int kLeftEncoderB = 1;
+    public static final int kRightEncoderA = 2;
+    public static final int kRightEncoderB = 3;
+
+    public static final double kWheelRadius = 0.0508; // meters
+    public static final double kTrackWidth = 0.381 * 2; // meters
+    public static final int kEncoderResolution = 4096;
+    public static final double kMaxSpeed = 3.0; // meters per second
+    public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
+    public static final double kDrivePowerLimit = 0.5; // limit power of the drivetrain
+
+    //PID constants 
+    //TODO: Tune PID constants
+    public static final double kP = 1.0;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
+    
+    //Feed forward constants
+    //TODO: Tune feed forward constants
+    public static final double kS = 1.0;
+    public static final double kV = 3.0;
+    public static final double kA = 0.0;
+    
+    }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }

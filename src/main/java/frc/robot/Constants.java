@@ -30,6 +30,19 @@ public final class Constants {
     public static final double kMaxSpeed = 3.0; // meters per second
     public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
     public static final double kDrivePowerLimit = 0.5; // limit power of the drivetrain
+
+    //PID constants 
+    //TODO: Tune PID constants
+    public static final double kP = 1.0;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
+    
+    //Feed forward constants
+    //TODO: Tune feed forward constants
+    public static final double kS = 1.0;
+    public static final double kV = 3.0;
+    public static final double kA = 0.0;
+    
     }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;

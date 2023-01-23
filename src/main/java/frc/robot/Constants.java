@@ -30,6 +30,19 @@ public final class Constants {
     public static final double kMaxSpeed = 3.0; // meters per second
     public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
     public static final double kDrivePowerLimit = 0.5; // limit power of the drivetrain
+
+    public static final double left_kP = 0.0;
+    public static final double left_kI = 0.0;
+    public static final double left_kD = 0.0;
+
+    public static final double right_kP = 0.0;
+    public static final double right_kI = 0.0;
+    public static final double right_kD = 0.0;
+
+    public static final double kS = 0.0;
+    public static final double kV = 0.0;
+    public static final double kA = 0.0;
+
     }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
@@ -45,9 +58,9 @@ public final class Constants {
     public static final int kClawId = 6;
   }
   public static class ElevatorPIDConstants{
-    public static final double kP = 0.00045;
-    public static final double kI = 0.0015;
-    public static final double kD = 0.00002;
+    public static final double kP = 0.0;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
   }
 
 }
